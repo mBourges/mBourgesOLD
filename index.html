@@ -3,17 +3,6 @@
 	<head>
 		<title>Matt B</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" />
-		<script>
-			$(document).ready(function() {
-				$('.main.menu').visibility({
-					type: 'fixed'
-				});
-				
-				$('.main.menu  .ui.dropdown').dropdown({
-					on: 'hover'
-				});
-			})
-		</script>
 	</head>
 	<body>
 		<div class="ui borderless main menu">
@@ -60,8 +49,20 @@
 			</ul>
 		</footer>
 		
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"></script>
+		
+		<script>
+			$(document).ready(function() {
+				$('.main.menu').visibility({
+					type: 'fixed'
+				});
+				
+				$('.main.menu  .ui.dropdown').dropdown({
+					on: 'hover'
+				});
+			})
+		</script>
 	</body>
 </html>
