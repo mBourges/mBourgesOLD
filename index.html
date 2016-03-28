@@ -6,24 +6,211 @@
 		
 		<title>Matt B</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" />
-		
+		<style>
+			.following.bar {
+    position: fixed;
+    top: 0px;
+    z-index: 900;
+    left: 0%;
+    padding: 2em 0em;
+    width: 100%;
+    box-shadow: 0px 0px 0px 0px transparent;
+    border-bottom: 1px solid transparent;
+    transition: padding 0.5s ease, background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+}
+
+.light.following.bar {
+    padding: 1em 0em;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
+}
+		</style>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"></script>
 		
 		<script>
 			$(document).ready(function() {
-				$('.main.menu').visibility({
-					type: 'fixed'
-				});
+				$('body')
+      .visibility({
+        offset         : -10,
+        observeChanges : false,
+        once           : false,
+        continuous     : false,
+        onTopPassed: function() {
+          requestAnimationFrame(function() {
+            $('.following.bar')
+              .addClass('light fixed')
+              .find('.menu')
+                .removeClass('inverted')
+            ;
+            $('.following .additional.item')
+              .transition('scale in', 750)
+            ;
+          });
+        },
+        onTopPassedReverse: function() {
+          requestAnimationFrame(function() {
+            $('.following.bar')
+              .removeClass('light fixed')
+              .find('.menu')
+                .addClass('inverted')
+                .find('.additional.item')
+                  .transition('hide')
+            ;
+          });
+        }
+      })
+    ;
+  }
 				
-				$('.main.menu  .ui.dropdown').dropdown({
-					on: 'hover'
-				});
+				
+				// $('.main.menu').visibility({
+				// 	type: 'fixed'
+				// });
+				
+				// $('.main.menu  .ui.dropdown').dropdown({
+				// 	on: 'hover'
+				// });
 			})
 		</script>
 	</head>
 	<body>
+		<div class="following bar">
+  <div class="ui container">
+    <div class="ui large secondary network menu inverted">
+      <div class="item">
+        <div class="ui logo shape">
+          <div class="sides">
+            <div class="active ui side">
+              <img class="ui image" src="/images/logo.png">
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="view-ui item">
+        <i class="sidebar icon"></i> Menu
+      </a>
+      <div class="right menu inverted">
+        <div class="item">
+          
+         
+        </div>
+        <div class="ui language floating dropdown link item" id="languages">
+          <i class="world icon"></i>
+          <div class="text">English</div>
+          <div class="menu inverted">
+            <div class="header">Search Languages</div>
+            <div class="ui icon search input">
+              <i class="search icon"></i>
+              <input type="text" placeholder="Search languages...">
+            </div>
+            <div class="scrolling menu inverted">
+  <div class="item active selected" data-percent="100" data-value="en" data-text="English" data-english="English">
+    <span class="description">English</span>
+    English
+  </div>
+  <div class="item" data-percent="94" data-value="da" data-text="dansk" data-english="Danish">
+    <span class="description">dansk</span>
+    Danish
+  </div>
+  <div class="item" data-percent="94" data-value="es" data-text="Español" data-english="Spanish">
+    <span class="description">Español</span>
+    Spanish
+  </div>
+  <div class="item" data-percent="34" data-value="zh" data-text="简体中文" data-english="Chinese">
+    <span class="description">简体中文</span>
+    Chinese
+  </div>
+  <div class="item" data-percent="54" data-value="zh_TW" data-text="中文 (臺灣)" data-english="Chinese (Taiwan)">
+    <span class="description">中文 (臺灣)</span>
+    Chinese (Taiwan)
+  </div>
+  <div class="item" data-percent="79" data-value="fa" data-text="پارسی" data-english="Persian">
+    <span class="description">پارسی</span>
+    Persian
+  </div>
+  <div class="item" data-percent="41" data-value="fr" data-text="Français" data-english="French">
+    <span class="description">Français</span>
+    French
+  </div>
+  <div class="item" data-percent="37" data-value="el" data-text="ελληνικά" data-english="Greek">
+    <span class="description">ελληνικά</span>
+    Greek
+  </div>
+  <div class="item" data-percent="37" data-value="ru" data-text="Русский" data-english="Russian">
+    <span class="description">Русский</span>
+    Russian
+  </div>
+  <div class="item" data-percent="36" data-value="de" data-text="Deutsch" data-english="German">
+    <span class="description">Deutsch</span>
+    German
+  </div>
+  <div class="item" data-percent="23" data-value="it" data-text="Italiano" data-english="Italian">
+    <span class="description">Italiano</span>
+    Italian
+  </div>
+  <div class="item" data-percent="21" data-value="nl" data-text="Nederlands" data-english="Dutch">
+    <span class="description">Nederlands</span>
+    Dutch
+  </div>
+  <div class="item" data-percent="19" data-value="pt_BR" data-text="Português(BR)" data-english="Portuguese">
+    <span class="description">Português(BR)</span>
+    Portuguese
+  </div>
+  <div class="item" data-percent="17" data-value="id" data-text="Indonesian" data-english="Indonesian">
+    <span class="description">Indonesian</span>
+    Indonesian
+  </div>
+  <div class="item" data-percent="12" data-value="lt" data-text="Lietuvių" data-english="Lithuanian">
+    <span class="description">Lietuvių</span>
+    Lithuanian
+  </div>
+  <div class="item" data-percent="11" data-value="tr" data-text="Türkçe" data-english="Turkish">
+    <span class="description">Türkçe</span>
+    Turkish
+  </div>
+  <div class="item" data-percent="10" data-value="kr" data-text="한국어" data-english="Korean">
+    <span class="description">한국어</span>
+    Korean
+  </div>
+  <div class="item" data-percent="7" data-value="ar" data-text="العربية" data-english="Arabic">
+    <span class="description">العربية</span>
+    Arabic
+  </div>
+  <div class="item" data-percent="6" data-value="hu" data-text="Magyar" data-english="Hungarian">
+    <span class="description">Magyar</span>
+    Hungarian
+  </div>
+  <div class="item" data-percent="6" data-value="vi" data-text="tiếng Việt" data-english="Vietnamese">
+    <span class="description">tiếng Việt</span>
+    Vietnamese
+  </div>
+  <div class="item" data-percent="5" data-value="sv" data-text="svenska" data-english="Swedish">
+    <span class="description">svenska</span>
+    Swedish
+  </div>
+  <div class="item" data-precent="4" data-value="pl" data-text="polski" data-english="Polish">
+    <span class="description">polski</span>
+    Polish
+  </div>
+  <div class="item" data-percent="6" data-value="ja" data-text="日本語" data-english="Japanese">
+    <span class="description">日本語</span>
+    Japanese
+  </div>
+  <div class="item" data-percent="0" data-value="ro" data-text="românește" data-english="Romanian">
+    <span class="description">românește</span>
+    Romanian
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 		<div class="ui borderless main menu">
 			<div class="ui text container">
 				<div href="#" class="header item">
