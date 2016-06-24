@@ -23,4 +23,17 @@ Use CamelCase, all classes starting with a upper case, methods and fields with l
     Local_class.DoSomething(); 
     return Local_class.MyField;
   }
+
+GOOD
+if (application.ts2__Offers__r.size() > 0) {
+    Boolean applicationHasManyOffers = true;
+    candidate.offerDate = application.ts2__Offers__r.get(0).Offer_Date__c;
+    candidate.stage = 'Offer';
+
+    MyClass localClass = new MyClass();
+    localClass.doSomething(); 
+    return localClass.myField;
+}
+
+for (int i = 0 ; i < maxSize ; ++i) { ... }
 ```
