@@ -8,8 +8,14 @@ Another important thing to remember is that **we are a team**. Your code is shar
 Finally, a last rule to follow is the **Boy Scout rule**: “Always leave the campground cleaner than you found it”. Every time you read some code, if any line seems to be unclear, abstract, dirty or anything else not respecting this document, it is also **your responsibility** to clean it and to improve this code (you are, of course, allowed to blame and slap the author). Afraid to break anything doing this? That’s why unit tests are made.
 
 # Table of Contents
-[If conditions](#if-conditions)
-[Brackets](#brackets)
+1. [Introduction](#introduction)
+2. [Table of Contents](#table-of-contents)
+    1. [Naming](#naming)
+    2. [Comments](#comments)
+    3. [Structure](#structure)
+    4. [Space](#space)
+    5. [If conditions](#if-conditions)
+    6. [Brackets](#brackets)
 
 # Common rules to any language
 
