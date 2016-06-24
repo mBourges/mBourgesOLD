@@ -12,7 +12,6 @@ Finally, a last rule to follow is the **Boy Scout rule**: “Always leave the ca
 ## Naming
 **A method says what it does and does what it says.** Use long name variables, no abbreviations, even for temp variables. The only one exception is for for variables, where i,j or k are allowed.
 Use CamelCase, all classes starting with a upper case, methods and fields with lower case
-
 ```java
 BAD
 if(app.ts2__Offers__r.size() > 0){
@@ -39,7 +38,6 @@ for (int i = 0 ; i < maxSize ; ++i) { ... }
 ```
 ## Comments
 Comments should be only used in last solution. Use explicit methods instead. Avoid commented code. Version control tools or Eclipse local history are there if you need to get back your old commented code.
-
 ```java
 BAD
 // code before
@@ -101,4 +99,49 @@ private List<ts2__Offer__c> myFunction(){
     }
     return objectToReturn;
 }
+```
+## Space
+Put space between parenthesis and brackets, in for loops and in logical conditions.
+Example:
+```Java
+BAD
+private void processOffers(List<ts2__Offer__c> offers){
+    for(ts2__Offer__c offer:offers){
+        if(offer.ts2__Candidate__c==null){
+
+GOOD
+private void processOffers (List<ts2__Offer__c> offers) {
+    for (ts2__Offer__c offer : offers) {
+        if (offer.ts2__Candidate__c == null) {
+```
+## If conditions
+If you have two or more logical conditions in an if, use an explicit private method. If your if condition returns a Boolean, inline it. Don’t chain many useless levels of if conditions. One space after if condition and before opening bracket.
+Example:
+```Java
+BAD
+if (offer.ts2__Candidate__c == null && this.number > 10 && (this.toto != null || !tata)) {
+    // DO STUFF
+}
+
+GOOD
+if (shouldDoStuff()) {
+    // DO STUFF
+}
+
+private boolean shouldDoStuff () {
+    return offer.ts2__Candidate__c == null 
+           && this.number > 10 
+           && (this.toto != null 
+               || ! tata);
+}        
+```
+```Java
+BAD
+if(pars.stages && pars.stages.length > 0 && pars.stages.indexOf(item.stage) != -1) { 
+    return true;
+}
+return false;
+
+GOOD
+return (pars.stages && pars.stages.length > 0 && pars.stages.indexOf(item.stage) != -1);
 ```
