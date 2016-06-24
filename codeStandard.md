@@ -10,10 +10,10 @@ Finally, a last rule to follow is the **Boy Scout rule**: “Always leave the ca
 # Common rules to any language
 
 ## Naming
-**A method says what it does and does what it says.** Use long name variables, no abbreviations, even for temp variables. The only one exception is for for variables, where i,j or k are allowed. 
-
+**A method says what it does and does what it says.** Use long name variables, no abbreviations, even for temp variables. The only one exception is for for variables, where i,j or k are allowed.
 Use CamelCase, all classes starting with a upper case, methods and fields with lower case
 
+```java
   BAD
   if(app.ts2__Offers__r.size() > 0){
     Boolean tmp = true;
@@ -23,3 +23,4 @@ Use CamelCase, all classes starting with a upper case, methods and fields with l
     Local_class.DoSomething(); 
     return Local_class.MyField;
   }
+```
