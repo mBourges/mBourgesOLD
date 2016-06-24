@@ -14,15 +14,15 @@ Finally, a last rule to follow is the **Boy Scout rule**: “Always leave the ca
 Use CamelCase, all classes starting with a upper case, methods and fields with lower case
 
 ```java
-  BAD
-  if(app.ts2__Offers__r.size() > 0){
+BAD
+if(app.ts2__Offers__r.size() > 0){
     Boolean tmp = true;
     cdd.offDate = app.ts2__Offers__r[0].Offer_Date__c;
     cdd.stage = 'Offer';
     myClass Local_class = new myClass();
     Local_class.DoSomething(); 
     return Local_class.MyField;
-  }
+}
 
 GOOD
 if (application.ts2__Offers__r.size() > 0) {
@@ -36,4 +36,69 @@ if (application.ts2__Offers__r.size() > 0) {
 }
 
 for (int i = 0 ; i < maxSize ; ++i) { ... }
+```
+## Comments
+Comments should be only used in last solution. Use explicit methods instead. Avoid commented code. Version control tools or Eclipse local history are there if you need to get back your old commented code.
+
+```java
+BAD
+// code before
+//checks if Retainer-Type Job Order only has 1 active placement and loads job order fees
+if(jobOrder.RecordType.DeveloperName == 'Retainer') isRetainer = true;
+if(isRetainer) this.loadRetainerFees(jobOrder); 
+// code after
+
+GOOD
+// code before
+this.loadRetainerFeesIfNeeded(jobOrder);
+// code after
+
+private void loadRetainerFeesIfNeeded (ts2__Job__c jobOrder) {
+    if (jobOrder.RecordType.DeveloperName == 'Retainer') {
+        this.isRetainer = true;
+        this.loadRetainerFees(jobOrder);
+    } 
+} 
+
+BAD
+$scope.openLink = function(link){
+    $scope.selectedLinkId = link;				
+    $scope.showForm=true;
+    //document.getElementById('pplIframe').contentWindow.location.reload();
+};
+```
+## Structure
+Use a 4 spaces for each level. Open bracket on same line. Close bracket on the same level. Use only one return;
+Example:
+```java
+public with sharing class Ats3PipelineBuilder {
+    private Id jobOrderId;
+    
+    public void build(Id jobOrderId) {
+        this.atsPipelineDto = new Ats3PipelineDto();
+        if (jobOrder.ts2__Applications__r.size() == 0) {
+            this.messages.add(new Ats3MessageDto('error', 'noApplication'));
+        } else {
+            this.jobOrderName = jobOrder.Name;
+        }
+    }
+}
+
+BAD
+private List<ts2__Offer__c> myFunction(){
+    if (this.Condition()) {
+       return new List<ts2__Offer__c>();
+    } else {
+        return null;
+    }
+}
+
+GOOD
+private List<ts2__Offer__c> myFunction(){
+    List<ts2__Offer__c> objectToReturn;
+    if (this.Condition()) {
+       objectToReturn = new List<ts2__Offer__c>();
+    }
+    return objectToReturn;
+}
 ```
