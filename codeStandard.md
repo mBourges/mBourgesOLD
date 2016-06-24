@@ -7,6 +7,8 @@ Another important thing to remember is that **we are a team**. Your code is shar
 
 Finally, a last rule to follow is the **Boy Scout rule**: “Always leave the campground cleaner than you found it”. Every time you read some code, if any line seems to be unclear, abstract, dirty or anything else not respecting this document, it is also **your responsibility** to clean it and to improve this code (you are, of course, allowed to blame and slap the author). Afraid to break anything doing this? That’s why unit tests are made.
 
+[Link to Header](#Brackets)
+
 # Common rules to any language
 
 ## Naming
