@@ -145,3 +145,47 @@ return false;
 GOOD
 return (pars.stages && pars.stages.length > 0 && pars.stages.indexOf(item.stage) != -1);
 ```
+```java
+BAD
+if(items[i].cddOwnerId == pars.selectedUserId){
+    if(stageCheck(pars, items[i])) arrayToReturn.push(items[i]);
+}
+
+GOOD
+if (items[i].cddOwnerId == pars.selectedUserId && stageCheck(pars, items[i])) {
+    arrayToReturn.push(items[i]);
+}
+
+BETTER
+if (this.shouldPushData(parser, items[i])) {
+    arrayToReturn.push(items[i]);
+}
+
+this.shouldPushData = function(parser, item) {
+    return item.cddOwnerId == parser.selectedUserId 
+           && stageCheck(parser, item);
+}
+```
+## Brackets
+Use brackets every time, even for one line if or for loop. One line if or for loop are bugs magnets.
+Example:
+```java
+DO NOT DO THIS! 
+for(ts2__Application__c app : j.ts2__Applications__r)
+    ids.add(app.ts2__Candidate_Contact__c);
+for(ts2__Submittal__c sub : j.ts2__Presents__r)
+    ids.add(sub.ts2__Candidate__c);
+for(ts2__Interview__c ccm : j.ts2__Interviews__r)
+    ids.add(ccm.ts2__Candidate__c);
+for(ts2__Offer__c off : j.ts2__Offers__r)
+    ids.add(off.ts2__Candidate__c);
+for(ts2__Placement__c plc : j.ts2__Placements__r)
+    ids.add(plc.ts2__Employee__c);
+
+I WILL KILL YOUR DOG IF YOU DO THIS 
+if(jobOrder.RecordType.DeveloperName == 'Retainer') isRetainer = true;
+if(isRetainer) this.loadRetainerFees(jobOrder);
+
+OR THIS
+for(var i=0;i<items.length; i++)if(stageCheck(pars,items[i]))arrayToReturn.push(items[i]);
+```
